@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>GSSoC - First PR: Implement Popup Design :: Terminal</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="This article walks through the open source contribution done in **GirlScript Summer of Code** against [Smart-Home-App](https://github.com/Lakhankumawat/smart-home-app) repository for the very first PR. The coming challenges and their possible solutions are also discussed along the way." />
+<meta name="keywords" content="gssoc, flutter, open-source" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://fredorixo.github.io/posts/gssoc-first-pr/" />
+
+
+
+
+<link rel="stylesheet" href="https://fredorixo.github.io/assets/style.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://fredorixo.github.io/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://fredorixo.github.io/img/favicon/orange.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="GSSoC - First PR: Implement Popup Design">
+<meta property="og:description" content="This article walks through the open source contribution done in **GirlScript Summer of Code** against [Smart-Home-App](https://github.com/Lakhankumawat/smart-home-app) repository for the very first PR. The coming challenges and their possible solutions are also discussed along the way." />
+<meta property="og:url" content="https://fredorixo.github.io/posts/gssoc-first-pr/" />
+<meta property="og:site_name" content="Terminal" />
+
+  
+    <meta property="og:image" content="https://fredorixo.github.io/img/favicon/orange.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2022-04-03 11:28:35 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="orange">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/showcase">Showcase</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/showcase">Showcase</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://fredorixo.github.io/posts/gssoc-first-pr/">GSSoC - First PR: Implement Popup Design</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        03-Apr-2022
+        
+      </span>
+    
+    
+    
+      <span class="post-reading-time">:: 2 min read</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://fredorixo.github.io/tags/gssoc/">gssoc</a>&nbsp;
+    
+    #<a href="https://fredorixo.github.io/tags/flutter/">flutter</a>&nbsp;
+    
+    #<a href="https://fredorixo.github.io/tags/open-source/">open-source</a>&nbsp;
+    
+  </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>Through this PR, I got the opportunity to implement the UI design for the popups in flutter that would then be used in various other parts of the application.</p>
+<!-- raw HTML omitted -->
+
+  <figure class="left" >
+    <img src="/img/gssoc-first-pr/popup-ui-design.png"  alt="Popups UI Design"   style="border-radius: 2px;"  />
+    
+      <figcaption class="center" >Popups UI Design</figcaption>
+    
+  </figure>
+
+
+<p>As the work progressed, in order to accommodate changes due to upcoming needs, refactoring was done and it finally ended up in the work tree hierarchy shown below.</p>
+<!-- raw HTML omitted -->
+
+  <figure class="center" >
+    <img src="/img/gssoc-first-pr/work-tree-hierarchy.png"  alt="Work Tree Hierarchy"   style="border-radius: 2px;"  />
+    
+      <figcaption class="center" >Work Tree Hierarchy</figcaption>
+    
+  </figure>
+
+
+<hr>
+<h2 id="challenges-encountered">Challenges Encountered<a href="#challenges-encountered" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>While building the PopupState widget, we made use of the ListTile widget, and came across the fact that a subtitle may not be preferred with every title, and hence ended up making that property nullable, and used an empty string as a fallback, if no argument was passed against the popupSubtitle parameter.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ListTile<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    title<span style="color:#f92672">:</span> Padding<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>        padding<span style="color:#f92672">:</span> <span style="color:#66d9ef">const</span> EdgeInsets<span style="color:#f92672">.</span><span style="color:#a6e22e">only</span><span style="color:#f92672">(</span>bottom<span style="color:#f92672">:</span> 8<span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>        child<span style="color:#f92672">:</span> Text<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>            popupTitle<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>            style<span style="color:#f92672">:</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">TextStyle</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>                fontFamily<span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">&#39;</span>Lexend<span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                fontSize<span style="color:#f92672">:</span> 20<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>            textAlign<span style="color:#f92672">:</span> TextAlign<span style="color:#f92672">.</span><span style="color:#a6e22e">center</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>    subtitle<span style="color:#f92672">:</span> Text<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>        popupSubtitle <span style="color:#f92672">??</span> <span style="color:#960050;background-color:#1e0010">&#39;&#39;</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>        textAlign<span style="color:#f92672">:</span> TextAlign<span style="color:#f92672">.</span><span style="color:#a6e22e">center</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p>But as a result, if the popupSubtitle did turn out to be null, in the UI, the ListTile would reserve some space for the subtitle, which would appear as a prominent gap, as in the below snip.</p>
+
+  <figure class="center" >
+    <img src="/img/gssoc-first-pr/reserved-subtitle-space.png"  alt="Reserved Subtitle Space"   />
+    
+      <figcaption class="center" >Reserved Subtitle Space</figcaption>
+    
+  </figure>
+
+
+<hr>
+<h2 id="proposed-solution">Proposed Solution<a href="#proposed-solution" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>The solution to this was to introduce a function that, based on the value of subtitle, would decide whether to return null or the subtitle wrapped inside the Text widget. The following snippet illustrates the solution.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Widget<span style="color:#f92672">?</span> _judgeSubtitle<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> popupSubtitle <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">?</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">:</span> Text<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>            popupSubtitle<span style="color:#f92672">!,</span>
+</span></span><span style="display:flex;"><span>            textAlign<span style="color:#f92672">:</span> TextAlign<span style="color:#f92672">.</span><span style="color:#a6e22e">center</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>And, the complete code would then look like,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ListTile<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    title<span style="color:#f92672">:</span> Padding<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>        padding<span style="color:#f92672">:</span> <span style="color:#66d9ef">const</span> EdgeInsets<span style="color:#f92672">.</span><span style="color:#a6e22e">only</span><span style="color:#f92672">(</span>bottom<span style="color:#f92672">:</span> 8<span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>        child<span style="color:#f92672">:</span> Text<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>            popupTitle<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>            style<span style="color:#f92672">:</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">TextStyle</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>                fontFamily<span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">&#39;</span>Lexend<span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                fontSize<span style="color:#f92672">:</span> 20<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>            textAlign<span style="color:#f92672">:</span> TextAlign<span style="color:#f92672">.</span><span style="color:#a6e22e">center</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>    subtitle<span style="color:#f92672">:</span> _judgeSubtitle<span style="color:#f92672">(),</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><p>Ultimately, the ListTile no longer reserves space for the subtitle and the output looks as desired.</p>
+
+  <figure class="center" >
+    <img src="/img/gssoc-first-pr/subtitle-space-vanished.png"  alt="Subtitle Space Vanished"   />
+    
+      <figcaption class="center" >Subtitle Space Vanished</figcaption>
+    
+  </figure>
+
+
+<p>That is all for this article. If you found it helpful and wish to go over the source code, you can hop over to <a href="https://github.com/Lakhankumawat/smart-home-app/tree/master/lib/popups">Source Code</a>.</p>
+
+      </div></div>
+
+  
+  
+  
+
+  
+  
+  
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://fredorixo.github.io/assets/main.js"></script>
+<script src="https://fredorixo.github.io/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
