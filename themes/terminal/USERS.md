@@ -33,6 +33,7 @@
 - https://waterloos.niflheimr.blue/ **cindrmon** (Student and Aspiring Software Engineer)
 - https://monocle.rpod.club/ **classx** (DevOps Engineer)
 - https://wjdevschool.com/ **Wojciech Bogócki** (Making Things & Teaching / W&J Dev School)
+- https://erisianrite.com/ **ErisianRite** (Coding, Engineering, Tools for Thought)
 - https://dongzhi.me **Joe** (Software Developer)
 - https://isaes.com.tr/ **Isa Es** (Software Engineer)
 - https://conight.com **Conight Wang** (Software Engineer)
@@ -58,6 +59,13 @@
 - https://they.mint.lgbt **Joey Aliaga** (Software Developer & Student)
 - https://tatewilhelm.me **Tate Wilhelm** (Student, Programmer & Tinkerer)
 - https://mikefoden.com **Mike Foden** (Software Developer)
+- https://undemalum.github.io/portfolio/ **Mateusz Konat** (Student)
+- https://ku0hn.radio **Ben Kuhn** (Ham Radio Operator, InfoSec Engineer, Tinkerer)
+- https://bg117.xyz/projects **bg117** (Student and Hobby Programmer)
+- https://www.grumpymetalguy.com **GrumpyMetalGuy** (General Grumper and Developer)
+- https://blog.jontes.page **Jonte** (general tech geek)
+- https://nazdarthegame.com/ **Michal Skoula** (Software Developer)
+- https://1mup.myorange.house **Antonio Garosi** (Street art gallery)
 
 <!--
  TEMPLATE:
