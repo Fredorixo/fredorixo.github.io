@@ -1,10 +1,8 @@
 +++
 title = "About"
-date = "2022-04-12"
 +++
 
-# Hi there
+## Hi There!
 
 My name is Manas Kaushik.
-I'm an under graduate currently pursuing Bachelor Degree in Technology, Computer Science from USICT, New Delhi.
-A tech enthusiast who is always keen to learn new things.
+I'm an under graduate currently pursuing Bachelor's Degree in Computer Science from USICT, New Delhi. I'm a tech enthusiast who is always keen to learn new things.
