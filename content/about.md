@@ -4,5 +4,6 @@ title = "About"
 
 ## Hi There!
 
-My name is Manas Kaushik.
-I'm an under graduate currently pursuing Bachelor's Degree in Computer Science from USICT, New Delhi. I'm a tech enthusiast who is always keen to learn new things.
+I'm Manas Kaushik, and a software engineer with strong background in DevOps and Infrastructure engineering, having experience in technologies like Docker, Kubernetes, Terraform, Jenkins, and more.
+
+The name *Tech Tether* reflects my goal of connecting others to my personal experiences with technology.
